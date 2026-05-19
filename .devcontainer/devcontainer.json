@@ -1,0 +1,56 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/python
+{
+	"name": "SpecKitDevContainer",
+	"image": "mcr.microsoft.com/devcontainers/python:3.13-trixie",
+	"features": {
+		"ghcr.io/devcontainers/features/common-utils:2": {
+			"installZsh": true,
+			"installOhMyZsh": true,
+			"installOhMyZshConfig": true,
+			"upgradePackages": true,
+			"username": "devcontainer",
+			"userUid": "automatic",
+			"userGid": "automatic"
+		},
+		"ghcr.io/devcontainers/features/dotnet:2": {
+			"version": "lts"
+		},
+		"ghcr.io/devcontainers/features/git:1": {
+			"ppa": true,
+			"version": "latest"
+		},
+		"ghcr.io/devcontainers/features/node": {
+			"version": "lts"
+		}
+	},
+  "forwardPorts": [8080],
+  "containerUser": "devcontainer",
+  "updateRemoteUserUID": true,
+  "postCreateCommand": "chmod +x ./.devcontainer/post-create.sh && ./.devcontainer/post-create.sh",
+  "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+		"mhutchie.git-graph",
+		"eamodio.gitlens",
+		"GitHub.copilot",
+		"GitHub.copilot-chat",
+		"openai.chatgpt",
+		"kilocode.Kilo-Code",
+		"RooVeterinaryInc.roo-cline",
+		"anthropic.claude-code"
+	],
+      "settings": {
+		"git.autofetch": true,
+		"chat.promptFilesRecommendations": {
+			"speckit.constitution": true,
+			"speckit.specify": true,
+			"speckit.plan": true,
+			"speckit.tasks": true,
+			"speckit.implement": true
+		}
+      }
+    }
+  }
+}
